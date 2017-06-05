@@ -811,7 +811,7 @@ public class Main {
             Session database = factory.openSession();
             List list = database.createQuery("from Schedules").list();
             //List list = database.createSQLQuery("select * from match").list();
-            System.out.println(list);
+            //System.out.println(list);
             database.close();
             model.addAttribute("schedule", list);
             model.addAttribute("i", session.getAttribute("member"));
