@@ -12,17 +12,17 @@ function checkPass()
     var badColor = "#ff6666";
     //Compare the values in the password field 
     //and the confirmation field
-    if(pass1.value == pass2.value && pass1.value != "" && pass2.value != ""){
+    if (pass1.value == pass2.value && pass1.value != "" && pass2.value != "") {
         //The passwords match. 
         //Set the color to the good color and inform
         //the user that they have entered the correct password 
-        
+
         pass2.style.backgroundColor = goodColor;
         lpass1.className = "control-group success";
         lpass2.className = "control-group success";
         message.style.color = goodColor;
         message.innerHTML = "Passwords Match"
-    }else{
+    } else {
         //The passwords do not match.
         //Set the color to the bad color and
         //notify the user.
@@ -32,16 +32,16 @@ function checkPass()
         message.style.color = badColor;
         message.innerHTML = "Passwords Do Not Match!"
     }
-} 
-function validatephone(phone) 
+}
+function validatephone(phone)
 {
     var maintainplus = '';
     var numval = phone.value
-    if ( numval.charAt(0)=='+' )
+    if (numval.charAt(0) == '+')
     {
         var maintainplus = '';
     }
-    curphonevar = numval.replace(/[\\A-Za-z!"£$%^&\,*+_={};:'@#~,.Š\/<>?|`¬\]\[]/g,'');
+    curphonevar = numval.replace(/[\\A-Za-z!"£$%^&\,*+_={};:'@#~,.Š\/<>?|`¬\]\[]/g, '');
     phone.value = maintainplus + curphonevar;
     var maintainplus = '';
     phone.focus;
@@ -53,42 +53,48 @@ function Validate(txt) {
 // validate email
 function email_validate(email)
 {
-var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+    var regMail = /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
 
-    if(regMail.test(email) == false)
+    if (regMail.test(email) == false)
     {
-    document.getElementById("status").innerHTML    = "<span class='warning'>Email address is not valid yet.</span>";
-    }
-    else
+        document.getElementById("status").innerHTML = "<span class='warning'>Email address is not valid yet.</span>";
+    } else
     {
-    document.getElementById("status").innerHTML	= "<span class='valid'>Thanks, you have entered a valid Email address!</span>";	
+        document.getElementById("status").innerHTML = "<span class='valid'>Thanks, you have entered a valid Email address!</span>";
     }
 }
 // validate date of birth
 function dob_validate(dob)
 {
-var regDOB = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/;
+    var regDOB = /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})$/;
 
-    if(regDOB.test(dob) == false)
+    if (regDOB.test(dob) == false)
     {
-    document.getElementById("statusDOB").innerHTML	= "<span class='warning'>DOB is only used to verify your age.</span>";
-    }
-    else
+        document.getElementById("statusDOB").innerHTML = "<span class='warning'>DOB is only used to verify your age.</span>";
+    } else
     {
-    document.getElementById("statusDOB").innerHTML	= "<span class='valid'>Thanks, you have entered a valid DOB!</span>";	
+        document.getElementById("statusDOB").innerHTML = "<span class='valid'>Thanks, you have entered a valid DOB!</span>";
     }
 }
 // validate address
 function add_validate(address)
 {
-var regAdd = /^(?=.*\d)[a-zA-Z\s\d\/]+$/;
-  
-    if(regAdd.test(address) == false)
+    var regAdd = /^(?=.*\d)[a-zA-Z\s\d\/]+$/;
+
+    if (regAdd.test(address) == false)
     {
-    document.getElementById("statusAdd").innerHTML	= "<span class='warning'>Address is not valid yet.</span>";
+        document.getElementById("statusAdd").innerHTML = "<span class='warning'>Address is not valid yet.</span>";
+    } else
+    {
+        document.getElementById("statusAdd").innerHTML = "<span class='valid'>Thanks, Address looks valid!</span>";
     }
+}
+
+function ConfirmDelete(a)
+{
+    var x = confirm("Are you sure you want to delete?");
+    if (x)
+        location.href = a;
     else
-    {
-    document.getElementById("statusAdd").innerHTML	= "<span class='valid'>Thanks, Address looks valid!</span>";	
-    }
+        return false;
 }

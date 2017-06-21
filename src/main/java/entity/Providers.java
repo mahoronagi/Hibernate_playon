@@ -55,7 +55,7 @@ public class Providers {
 	public void setType(String type) { this.type = type; }
         
         public String getIpHost() { return iphost; }
-	public void setIpHost(String tyiphostpe) { this.iphost = iphost; }
+	public void setIpHost(String iphost) { this.iphost = iphost; }
         
         public Providers(){}
 }

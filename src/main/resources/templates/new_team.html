@@ -2,6 +2,11 @@
 <#include "header.html">
 
 <body>
+    <#if member.getRoleSchedule() != 1>
+        <script>
+            window.onload = window.location.href = "/index";
+        </script>
+        </#if>
     <!-- start: Header -->
     <#include "header-menu.html">
     <!-- start: Header -->
@@ -36,7 +41,7 @@
                                 <div class="control-group">
                                     <label class="control-label" for="selectError3">League Name</label>
                                     <div class="controls">
-                                      <select id="selectError3">
+                                        <select id="selectError3" name="lg_id">
                                           <#list lgs as a> 
                                           <option value="${a.getId()}">${a.getNameEN()}</option>
                                           </#list>  
@@ -46,21 +51,21 @@
                                 <div class="control-group">
                                     <label class="control-label" for="focusedInput">Team Name (EN)</label>
                                     <div class="controls">
-                                        <input class="form-control" type="text" name="league_th" />  
+                                        <input class="form-control" type="text" name="team_en" />  
                                         <div id="errLast"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="focusedInput">Team Name (TH)</label>
                                     <div class="controls">
-                                        <input class="form-control" type="text" name="league_cn" />  
+                                        <input class="form-control" type="text" name="team_th" />  
                                         <div id="errLast"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="focusedInput">Team Name (cn)</label>
                                     <div class="controls">
-                                        <input class="form-control" type="text" name="league_cn" />  
+                                        <input class="form-control" type="text" name="team_cn" />  
                                         <div id="errLast"></div>
                                     </div>
                                 </div>

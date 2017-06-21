@@ -22,6 +22,12 @@ public class Member {
         public Long last_activity;
         @Column(name="member_session_id")
         public String session_id;
+        @Column(name="role_admin")
+        public int type_admin;
+        @Column(name="role_provider")
+        public int type_provider;
+        @Column(name="role_schedule")
+        public int type_schedule;
         
 	
 	public Long getId() { return id; }
@@ -42,6 +48,32 @@ public class Member {
 	public void setLastActivity(Long last_activity) { this.last_activity = last_activity; }
         public String getSessionId() { return session_id; }
 	public void setSessionId(String session_id) { this.session_id = session_id; }
+        
+        public int getRoleAdmin() { return type_admin; }
+	public void setRoleAdmin(int type_admin) { 
+            if(type_admin!=1){
+                this.type_admin = 0;
+            }else{
+                this.type_admin = type_admin; 
+            }
+        }
+        public int getRoleProvider() { return type_provider; }
+	public void setRoleProvider(int type_provider) { 
+            if(type_provider!=1){
+                this.type_provider = 0;
+            }else{
+                this.type_provider = type_provider; 
+            }
+        }
+        public int getRoleSchedule() { return type_schedule; }
+	public void setRoleSchedule(int type_schedule) { 
+            if(type_schedule!=1){
+                this.type_schedule = 0;
+            }else{
+                this.type_schedule = type_schedule; 
+            }
+        }
+        
 	
 	public Member() {}
         public Member(Long id, String username) {

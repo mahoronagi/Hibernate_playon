@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<#include "header.html">
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.bootstrap-duallistbox.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-duallistbox.css">
+
+<style>
+    .col-md-6{
+        width: 46.66%;
+        float: left;
+    }
+    .box2{
+        margin-left: 15px;
+    }
+</style>
+<body>
+     <#if member.getRoleSchedule() != 1>
+        <script>
+            window.onload = window.location.href = "/index";
+        </script>
+        </#if>
+    <!-- start: Header -->
+    <#include "header-menu.html">
+    <!-- start: Header -->
+
+    <div class="container-fluid-full">
+        <div class="row-fluid">
+
+            <!-- start: Main Menu -->
+            <#include "left-menu.html">
+            <!-- end: Main Menu -->
+            
+            <!-- start: Content -->
+            <div id="content" class="span10">
+
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="/index">Home</a> 
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li><a href="#">Dashboard</a></li>
+                </ul>
+                <div class="box span11">
+                    <div class="box-header" data-original-title="">
+                        <h2><i class="halflings-icon white edit"></i><span class="break"></span>Add Package</h2>
+                    </div>
+                    <div class="box-content">
+                        <form id="demoform" class="form-horizontal" method="post">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label" for="focusedInput">Package Name</label>
+                                    <div class="controls">
+                                        <input class="form-control" type="text" name="package_name" value="${pack.getNameCH()}">  
+                                        <div id="errLast"></div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <!--<label class="control-label" for="selectError3">Plain Select</label>-->
+                                    <div class="controls">
+                                        <select multiple="multiple" size="10" id="boxCH" name="duallistbox_demo1[]" class="form-control" onload="ShowSelected()">                                                                                                                                 
+                                            <#assign a = []>
+                                            <#list channel as ch>
+                                                <#assign a = a+[ch.getId()]>
+                                                <#list pack.getPcCH()?split(",") as x>
+                                                    <#if  ch.getId()?j_string == x>
+                                                        <#assign a = a+[x?number]>
+                                                    </#if>
+                                                </#list>
+                                            </#list>
+                                            <#assign co = 0>
+                                            <#list 0..a?size-1 as i>
+                                                <#if i == 0 && a[i]!=a[i+1]>
+                                                    <option>${a[i]}</option>
+                                                <#elseif (i>0) && a[i]==a[i-1] >
+                                                    <#if a[i]==a[i-1]>
+                                                        <#list 0..channel?size-1 as x>
+                                                            <#if a[i] == channel[x].getId()> 
+                                                                <#assign co = a[i]>
+                                                                <option id="ch${channel[x].getId()}" value="${channel[x].getId()}" selected>${channel[x].getNameEN()} </option>
+                                                            </#if>
+                                                        </#list>
+                                                    </#if>
+                                                <#elseif (i>0) && a[i-1]!=co> 
+                                                    <#list 0..channel?size-1 as x>
+                                                        <!#--<option>${a[i-1]} != ${co} == ${channel[x].getId()}</option>-->
+                                                        <#if channel[x]?has_content && a[i-1] == channel[x].getId()> 
+                                                        <!#--<option>IF</option>-->
+                                                            <option id="ch${channel[x].getId()}" value="${channel[x].getId()}" >${channel[x].getNameEN()} </option>
+                                                        <#elseif  (channel?size-1 == x) && a[i] == channel[x].getId()>
+                                                        <!#--<option>ELSE</option>-->
+                                                            <option id="ch${channel[x].getId()}" value="${channel[x].getId()}" >${channel[x].getNameEN()} </option>
+                                                        </#if>
+                                                     </#list>   
+                                                </#if>
+                                            </#list>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="pg_ch" name="pg_ch" value="${pack.getPcCH()}">
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <a class="btn" href="/package">Cancel</a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <!-- end: Content -->
+            </div><!--/#content.span10-->
+        </div><!--/fluid-row-->
+        <script>
+            var selectedCH = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox();
+            $("#boxCH").change(function () { document.getElementById("pg_ch").value = $('[name="duallistbox_demo1[]"]').val(); });
+                
+        </script>
+        <#include "footer.html">

@@ -2,6 +2,12 @@
 <#include "header.html">
 
 <body>
+    <#if member.getRoleAdmin() != 1>
+        <script>
+            window.onload = window.location.href = "/index";
+        </script>
+    </#if>
+    
     <!-- start: Header -->
     <#include "header-menu.html">
     <!-- start: Header -->
@@ -61,12 +67,24 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="selectError3">Role Select</label>
+                                <label class="control-label" for="focusedInput">Role Name</label>
                                     <div class="controls">
-                                        <select id="selectError3" name="type">
-                                            <option value="admin">Admin</option>
-                                            <option value="member">Member</option>
-                                      </select>
+                                        <input class="form-control" type="text" name="type" id = "txt"/>  
+                                        <div id="errLast"></div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Checkboxes</label>
+                                    <div class="controls">
+                                        <label class="checkbox inline">
+                                            <div class="checker" id="uniform-inlineCheckbox1"><span><input type="checkbox" id="inlineCheckbox1" name="Admin" value="1"></span></div> Admin
+                                        </label>
+                                        <label class="checkbox inline">
+                                            <div class="checker" id="uniform-inlineCheckbox2"><span><input type="checkbox" id="inlineCheckbox2" name="Provider" value="1"></span></div> Provider
+                                        </label>
+                                        <label class="checkbox inline">
+                                            <div class="checker" id="uniform-inlineCheckbox3"><span><input type="checkbox" id="inlineCheckbox3" name="Schedule" value="1"></span></div> Schedule
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="form-actions">

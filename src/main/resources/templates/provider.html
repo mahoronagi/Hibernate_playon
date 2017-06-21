@@ -2,6 +2,11 @@
 <#include "header.html">
 
 <body>
+    <#if member.getRoleProvider() != 1>
+        <script>
+            window.onload = window.location.href = "/index";
+        </script>
+        </#if>
     <!-- start: Header -->
     <#include "header-menu.html">
     <!-- start: Header -->
@@ -56,15 +61,15 @@
                                     <td class="center">${p.getTimeCreate()}</td>
                                     <td class="center">${p.getTimeExpire()}</td>
                                     <td class="center">
-                                        <!--<a class="btn btn-success" href="/view_provider/${p.getId()}">
+                                        <a class="btn btn-success" href="/view_provider/${p.getId()}">
                                             <i class="halflings-icon white zoom-in"></i>  
-                                        </a>-->
+                                        </a>
                                         <a class="btn btn-info" href="/edit_provider/${p.getId()}">
                                             <i class="halflings-icon white edit"></i>  
                                         </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="halflings-icon white trash"></i> 
-                                        </a>
+                                        <button class="btn btn-danger" id="delete_user" value="/delete_provider/${p.getId()}" onclick="ConfirmDelete(this.value);">
+                                            <i class="halflings-icon white trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                                 </#list>

@@ -2,6 +2,11 @@
 <#include "header.html">
 
 <body>
+    <#if member.getRoleSchedule() != 1>
+        <script>
+            window.onload = window.location.href = "/index";
+        </script>
+        </#if>
     <!-- start: Header -->
     <#include "header-menu.html">
     <!-- start: Header -->

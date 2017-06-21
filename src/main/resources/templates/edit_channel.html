@@ -68,7 +68,26 @@
                                         <div id="errLast"></div>
                                     </div>
                                 </div>
-                                <!--
+                                <div class="control-group">
+                                    <label class="control-label" for="selectError3">Channel Type</label>
+                                    <div class="controls">
+                                        <select id="selectError3" name="ch_type">
+                                            <#list cat as ca>
+                                            <option value="${ca.getId()}" <#if ca.getId() == channel.getCatId() > selected </#if> >${ca.getName()}</option>
+                                            </#list>
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="selectError3">Channel Language</label>
+                                    <div class="controls">
+                                        <select id="selectError3" name="ch_language">
+                                            <option value="thai" <#if channel.getLanguage() == "thai"> selected </#if> >Thai</option>
+                                            <option value="english"  <#if channel.getLanguage() == "english"> selected </#if> >English</option>
+                                            <option value="albitg"  <#if channel.getLanguage() == "albitg"> selected </#if> >Albitg</option>
+                                      </select>
+                                    </div>
+                                </div>
                                 <div class="control-group">
                                     <label class="control-label">Image</label>
                                     <div class="controls">
@@ -79,10 +98,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                -->
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary" onclick="Upload()">Save changes</button>
-                                    <a class="btn" href="channels">Cancel</a>
+                                    <a class="btn" href="/channels">Cancel</a>
                                 </div>
                             </fieldset>
                         </form>
@@ -119,7 +137,7 @@
                                 var height = this.height;
                                 var width = this.width;
                                 if (height > 200 || width > 200) {
-                                    alert("Height and Width must not exceed 100px.");
+                                    alert("Height and Width must not exceed 200px.");
                                     return false;
                                 }
                                 alert("Uploaded image has valid Height and Width.");

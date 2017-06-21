@@ -2,12 +2,11 @@ package entity;
 
 import javax.persistence.*;
 
-@Entity @Table(name="api_package")
-public class Packages {
-    
-        @Id @Column(name="api_package_id") @GeneratedValue(strategy=GenerationType.IDENTITY)
+@Entity @Table(name="channel_cat")
+public class ChannelType {
+        @Id @Column(name="channel_cat_id") @GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long id;
-	@Column(name="api_package_name")
+	@Column(name="channel_cat_name")
 	String name;
         
         public Long getId() { return id; }
@@ -15,5 +14,4 @@ public class Packages {
 	public String getName() { return name; }
 	public void setName(String name) { this.name = name; }
         
-        public Packages() {}
 }

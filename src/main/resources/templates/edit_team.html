@@ -2,6 +2,11 @@
 <#include "header.html">
 
 <body>
+    <#if member.getRoleSchedule() != 1>
+        <script>
+            window.onload = window.location.href = "/index";
+        </script>
+        </#if>
     <!-- start: Header -->
     <#include "header-menu.html">
     <!-- start: Header -->
@@ -46,7 +51,7 @@
                                 <div class="control-group">
                                     <label class="control-label" for="focusedInput">Team Name (EN)</label>
                                     <div class="controls">
-                                        <input class="form-control" type="text" name="team_th" value="${team.getNameEN()}" />  
+                                        <input class="form-control" type="text" name="team_en" value="${team.getNameEN()}" />  
                                         <div id="errLast"></div>
                                     </div>
                                 </div>
@@ -60,18 +65,16 @@
                                 <div class="control-group">
                                     <label class="control-label" for="focusedInput">Team Name (cn)</label>
                                     <div class="controls">
-                                        <input class="form-control" type="text" name="team_th" value="${team.getNameEN()}"/>  
+                                        <input class="form-control" type="text" name="team_cn" value="${team.getNameEN()}"/>  
                                         <div id="errLast"></div>
                                     </div>
                                 </div>
-                                <!--
                                 <div class="control-group">
                                     <label class="control-label">Image</label>
                                     <div class="controls">
                                         <div class="uploader"><input type="file" name="Image"><span class="filename" style="user-select: none;">No file selected</span><span class="action" style="user-select: none;">Choose File</span></div>
                                     </div>
                                 </div>
-                                -->
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                     <a class="btn" href="/teams">Cancel</a>

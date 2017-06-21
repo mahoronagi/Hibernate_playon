@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<#include "header.html">
+
+<body ng-controller="stageController">
+    <!-- start: Header -->
+    <#include "header-menu.html">
+    <!-- start: Header -->
+
+    <div class="container-fluid-full">
+        <div class="row-fluid">
+
+            <!-- start: Main Menu -->
+            <#include "left-menu.html">
+            <!-- end: Main Menu -->
+
+
+            <!-- start: Content -->
+            <div id="content" class="span10">
+
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="/index">Home</a> 
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    <li><a href="#">Edit</a></li>
+                </ul>
+                
+                <div class="box span11">
+                    <div class="box-header" data-original-title="">
+                        <h2><i class="halflings-icon white edit"></i><span class="break"></span>Edit Password</h2>
+                        <div class="box-icon">
+                            <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+                            <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                            <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+                        </div>
+                    </div>
+                    <div class="box-content">
+                        <form class="form-horizontal" method="post">
+                            <fieldset>
+                                <#if i.getType() == "admin">
+                                <div class="control-group warning">
+                                    <label class="control-label" for="inputWarning">Current Password</label>
+                                    <div class="controls">
+                                        <input type="password" id="inputWarning" name="password">
+                                    </div>
+                                </div>
+                                </#if>
+                                <div class="control-group"  id="lpass1">
+                                    <label class="control-label" for="inputError">New Password</label>
+                                    <div class="controls">
+                                        <input required name="" type="password" class="form-control inputpass" minlength="4" maxlength="16"  id="pass1" />
+                                    </div>
+                                </div>
+                                <div class="control-group" id="lpass2">
+                                    <label class="control-label" for="inputSuccess">Confirm Password:</label>
+                                    <div class="controls">
+                                        <input required name="newpass" type="password" class="form-control inputpass" minlength="4" maxlength="16" placeholder="Enter again to validate"  id="pass2" onkeyup="checkPass(); return false;" />
+                                        <span id="confirmMessage" class="confirmMessage"></span>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <a class="btn" href="profile">Cancel</a>
+                                </div>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                </div>
+                <!-- end: Content -->
+            </div><!--/#content.span10-->
+        </div><!--/fluid-row-->
+
+        <#include "footer.html">

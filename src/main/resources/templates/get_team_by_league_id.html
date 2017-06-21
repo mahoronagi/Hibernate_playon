@@ -1,0 +1,10 @@
+<option value="0">Select Team</option>
+<#if schedules?has_content>
+<#list teams as te>
+<option value="${te.getId()}" <#if te.getId()== schedules.getTeamHomeId() ||  te.getId()== schedules.getTeamVisitorId()>selected</#if>>${te.getNameEN()}</option>
+</#list>
+<#else>
+<#list teams as te>
+<option value="${te.getId()}">${te.getNameEN()}</option>
+</#list>
+</#if>

@@ -1,7 +1,7 @@
 package entity;
 import javax.persistence.*;
 
-@Entity @Table(name="matchs")
+@Entity @Table(name="matches")
 public class Schedules {
         @Id  @Column(name="match_id") @GeneratedValue(strategy=GenerationType.IDENTITY)
         int match_id;
@@ -85,8 +85,8 @@ public class Schedules {
 	public void setTeamHomeNameEN(String team_home_name_en) { this.team_home_name_en = team_home_name_en; }
         public String getTeamHomeNameTH() { return team_home_name_th; }
 	public void setTeamHomeNameTH(String team_home_name_th) { this.team_home_name_th = team_home_name_th; }
-        public String getTeamHomeNameCN() { return team_home_name_en; }
-	public void setTeamHomeNameCN(String team_home_name_en) { this.team_home_name_en = team_home_name_en; }
+        public String getTeamHomeNameCN() { return team_home_name_cn; }
+	public void setTeamHomeNameCN(String team_home_name_cn) { this.team_home_name_cn = team_home_name_cn; }
         public String getTeamHomeImg() { return team_home_img; }
 	public void setTeamHomeImg(String team_home_img) { this.team_home_img = team_home_img; }
         
@@ -128,5 +128,6 @@ public class Schedules {
         }
         public void setTimeCreate(String time_created) { this.time_created = time_created; }
         
-        //public Schedules(){}
+        public Schedules(){}
+        
 }

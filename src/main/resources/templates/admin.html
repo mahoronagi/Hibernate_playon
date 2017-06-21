@@ -66,13 +66,11 @@
                                         <a class="btn btn-info" href="/edit/${m.getId()}">
                                             <i class="halflings-icon white edit"></i>  
                                         </a>
-                                            <!--<a class="btn btn-danger" href="#">-->
-                                            <a class="btn btn-danger" href="/delete_admin/${m.getId()}">
-                                            <i class="halflings-icon white trash"></i> 
-                                        </a>
+                                        <button class="btn btn-danger" id="delete_user" value="/delete_admin/${m.getId()}" onclick="ConfirmDelete(this.value);">
+                                            <i class="halflings-icon white trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
-
                                 </#list>
                                 </#if>
                             </tbody>
@@ -85,17 +83,4 @@
                 <!-- end: Content -->
             </div><!--/#content.span10-->
         </div><!--/fluid-row-->
-        <div class="modal hide fade" id="myModal">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">×</button>
-                <h3>Settings</h3>
-            </div>
-            <div class="modal-body">
-                <p>Here settings can be configured...</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn" data-dismiss="modal">Close</a>
-                <a href="#" class="btn btn-primary">Delete</a>
-            </div>
-        </div>
         <#include "footer.html">

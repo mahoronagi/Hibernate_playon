@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity @Table(name="sport")
 public class Sports {
         @Id @Column(name="sport_id") @GeneratedValue(strategy=GenerationType.IDENTITY)
-	Long id;
+	int id;
 	@Column(name="sport_name_en")
 	String name_en;
         @Column(name="sport_name_th")
@@ -15,8 +15,8 @@ public class Sports {
         @Column(name="sport_img")
 	String img;
         
-        public Long getId() { return id; }
-	public void setId(Long id) { this.id = id; }
+        public int getId() { return id; }
+	public void setId(int id) { this.id = id; }
 	public String getNameEN() { return name_en; }
 	public void setNameEN(String name_en) { this.name_en = name_en; }
         public String getNameTH() { return name_th; }

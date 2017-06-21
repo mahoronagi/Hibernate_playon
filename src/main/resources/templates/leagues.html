@@ -2,6 +2,11 @@
 <#include "header.html">
 
 <body>
+    <#if member.getRoleSchedule() != 1>
+    <script>
+        window.onload = window.location.href = "/index";
+    </script>
+    </#if>
     <!-- start: Header -->
     <#include "header-menu.html">
     <!-- start: Header -->
@@ -49,19 +54,19 @@
                                 <tr>
                                     <td class="center">
                                         <a href="#">
-                                            <img class="avatar" alt="Dennis Ji" src="/upload/${l.getImg()}">
+                                            <img class="img-circle" src="/upload/${l.getImg()}">
                                         </a>
                                     </td>
-                                    <td class="center">${l.getNameEN()}</td>
+                                    <td class="center"><a href="teams/${l.getId()}">${l.getNameEN()}</a></td>
                                     <td class="center">${l.getNameTH()}</td>
                                     <td class="center">${l.getNameCN()}</td>
                                     <td class="center">
                                         <a class="btn btn-info" href="/edit_leagues/${l.getId()}">
                                             <i class="halflings-icon white edit"></i>  
                                         </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="halflings-icon white trash"></i> 
-                                        </a>
+                                        <button class="btn btn-danger" id="delete_user" value="/delete_leagues/${l.getId()}" onclick="ConfirmDelete(this.value);">
+                                            <i class="halflings-icon white trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                                 </#list>

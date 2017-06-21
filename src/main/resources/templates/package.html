@@ -2,6 +2,11 @@
 <#include "header.html">
 
 <body>
+     <#if member.getRoleSchedule() != 1>
+        <script>
+            window.onload = window.location.href = "/index";
+        </script>
+        </#if>
     <!-- start: Header -->
     <#include "header-menu.html">
     <!-- start: Header -->
@@ -38,35 +43,30 @@
                                 <tr>
                                     <th>Sort</th>
                                     <th>Package Name</th>
-                                    <th>Package Credit</th>
                                     <th>Package Ative</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead> 
                             <tbody>
-                                <#if package?has_content>
-                                <#list package as p>
+                                <#if packs?has_content>
+                                <#list packs as p>
                                 <tr>
                                     <td>${p?counter}</td>
-                                    <td class="center">${p.name}</td>
-                                    <td class="center">${p.name}</td>
+                                    <td class="center">${p.getNameCH()}</td>
                                     <td class="center">
-                                        <#if p.getLastActivity() != 0>
                                         <span class="label label-success">Active</span>
-                                        <#else>
                                         <span class="label label-important">Banned</span>
-                                        </#if>
                                     </td>
                                     <td class="center">
-                                        <a class="btn btn-success" href="detail?id=${p.getID()}">
+                                        <a class="btn btn-success" href="#">
                                             <i class="halflings-icon white zoom-in"></i>  
                                         </a>
-                                        <a class="btn btn-info" href="#">
+                                        <a class="btn btn-info" href="/edit_package/${p.getId()}">
                                             <i class="halflings-icon white edit"></i>  
                                         </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="halflings-icon white trash"></i> 
-                                        </a>
+                                        <button class="btn btn-danger" id="delete_user" value="/delete_package/${p.getId()}" onclick="ConfirmDelete(this.value);">
+                                            <i class="halflings-icon white trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                                 </#list>

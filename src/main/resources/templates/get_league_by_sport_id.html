@@ -1,0 +1,11 @@
+<option value="0">Select League</option>
+<#if schedules?has_content && schedules?size!=0>
+<#list leagues as les>
+<option value="${les.getId()}" <#if les.getId()== schedules.getLeagueHomeId() ||  les.getId()== schedules.getLeagueVisitorId()>selected</#if>>${les.getNameEN()}</option>
+</#list>
+<#else>
+<#list leagues as les>
+<option value="${les.getId()}">${les.getNameEN()}</option>
+</#list>
+</#if>
+

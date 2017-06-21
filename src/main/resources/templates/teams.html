@@ -2,6 +2,11 @@
 <#include "header.html">
 
 <body>
+    <#if member.getRoleSchedule() != 1>
+        <script>
+            window.onload = window.location.href = "/index";
+        </script>
+        </#if>
     <!-- start: Header -->
     <#include "header-menu.html">
     <!-- start: Header -->
@@ -63,9 +68,9 @@
                                         <a class="btn btn-info" href="/edit_team/${team.getId()}">
                                             <i class="halflings-icon white edit"></i>  
                                         </a>
-                                        <a class="btn btn-danger" href="#">
-                                            <i class="halflings-icon white trash"></i> 
-                                        </a>
+                                        <button class="btn btn-danger" id="delete_user" value="/delete_team/${team.getId()}" onclick="ConfirmDelete(this.value);">
+                                            <i class="halflings-icon white trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                                 </#list>

@@ -107,10 +107,10 @@ $(document).ready(function(){
 			
 	/* ---------- Acivate Functions ---------- */
 	template_functions();
-	init_masonry();
-	sparkline_charts();
+	//init_masonry();
+	//sparkline_charts();
 	charts();
-	calendars();
+	//calendars();
 	growlLikeNotifications();
 	widthFunctions();
 	
@@ -196,7 +196,7 @@ function chart(){
 }
 
 /* ---------- Masonry Gallery ---------- */
-
+/*
 function init_masonry(){
     var $container = $('.masonry-gallery');
 
@@ -223,7 +223,7 @@ function init_masonry(){
         });
     });
 }
-
+*/
 /* ---------- Numbers Sepparator ---------- */
 
 function numberWithCommas(x) {
@@ -343,21 +343,21 @@ function template_functions(){
 	$('[rel="popover"],[data-rel="popover"]').popover();
 
 	/* ---------- File Manager ---------- */
-	var elf = $('.file-manager').elfinder({
+	/*var elf = $('.file-manager').elfinder({
 		url : 'misc/elfinder-connector/connector.php'  // connector URL (REQUIRED)
-	}).elfinder('instance');
+	}).elfinder('instance');*/
 
 	/* ---------- Star Rating ---------- */
-	$('.raty').raty({
+	/*$('.raty').raty({
 		score : 4 //default stars
-	});
+	});*/
 
 	/* ---------- Uploadify ---------- */
-	$('#file_upload').uploadify({
+	/*$('#file_upload').uploadify({
 		'swf'      : 'misc/uploadify.swf',
 		'uploader' : 'misc/uploadify.php'
 		// Put your options here
-	});
+	});*/
 
 	/* ---------- Fullscreen ---------- */
 	$('#toggle-fullscreen').button().click(function () {
@@ -768,7 +768,7 @@ function circle_progess() {
       
 
 /* ---------- Calendars ---------- */
-
+/*
 function calendars(){
 	
 
@@ -939,9 +939,9 @@ function calendars(){
 	});
 	
 }
-
+*/
 /* ---------- Sparkline Charts ---------- */
-
+/*
 function sparkline_charts() {
 	
 	//generate random number for charts
@@ -1041,7 +1041,7 @@ function sparkline_charts() {
 	}
 		
 }
-
+*/
 /* ---------- Charts ---------- */
 
 function charts() {

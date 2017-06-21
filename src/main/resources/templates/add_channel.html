@@ -69,6 +69,26 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+                                    <label class="control-label">Channel Type</label>
+                                    <div class="controls">
+                                        <select id="selectError3" name="ch_type">
+                                            <#list cat as ca>
+                                            <option value="${ca.getId()}">${ca.getName()}</option>
+                                            </#list>
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Channel Language</label>
+                                    <div class="controls">
+                                        <select id="selectError3" name="ch_language">
+                                            <option value="thai">Thai</option>
+                                            <option value="english">English</option>
+                                            <option value="albitg">Albitg</option>
+                                      </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
                                     <label class="control-label">Image</label>
                                     <div class="controls">
                                         <div class="uploader">
@@ -78,9 +98,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary" onclick="Upload()">Save changes</button>
-                                    <a class="btn" href="channels">Cancel</a>
+                                    <a class="btn" href="/channels">Cancel</a>
                                 </div>
                             </fieldset>
                         </form>

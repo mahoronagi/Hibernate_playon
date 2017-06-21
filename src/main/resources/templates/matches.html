@@ -1,0 +1,111 @@
+
+<div id="tablist">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist" style="text-align: center; margin: 0% 0% 0% 10%;">
+        <li role="presentation">
+            <button class="btn btn-default" id="tab-prev" value="${week[0].getDateMatch()}">«</button>
+        </li>
+
+        <#list week as w>
+        <li role="presentation">
+            <a href="#${w?counter}" aria-controls="${w?counter}" role="tab" data-toggle="tab">${w.getDateMatch()}</a>
+            <div class="text-center">${w.getCounter()}</div>
+        </li> 
+        </#list>
+
+        <li role="presentation">
+            <button class="btn btn-default" id="tab-next" value="${week[7].getDateMatch()}">»</button>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+        <#list week as ds>
+        <div role="tabpanel" class="tab-pane <#if ds?counter==4  >active in </#if>" id="${ds?counter}">
+
+            <!--match list-->
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td width="10%">Match Time</td>	
+                        <td width="20%">Compettition</td>	
+                        <td width="34%" class="text-center">Program</td>	
+                        <td width="20%">Channel</td>	
+                        <td width="10%">Created By</td>
+                        <td width="8%"><span aria-hidden="true" class="glyphicon glyphicon-edit"></span></td>
+                        <td width="8%"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></td>
+                    </tr>
+                    <#setting date_format="yyyy-MM-dd">
+                    <#if schedule?has_content>
+                    <#list schedule as ls>
+                    <#if ls.getMatchTime()?date("yyyy-MM-dd")?string == ds.getDateMatch()>
+                    <tr>
+                        <td>${ls.getMatchTime()}</td>
+                        <td>${ls.getLeagueNameEN()}</td>	
+                        <td class="text-center">${ls.getTeamHomeNameEN()}<span style="color: red;">VS</span>${ls.getTeamVisitorNameEN()}</td>	
+                        <td>
+                            <a href="#">PPTV</a>
+                        </td>
+                        <td>${ls.getCreateBy()}</td>
+                        <td><a class="btn btn-info" href="/edit_schedule/${ls.getId()}"> <i class="halflings-icon white edit"></i> </a></td>
+                        <td><a href="delete_schedule/${ls.getId()}" class="btn btn-danger" onclick="return confirm('confirm')"><span aria-hidden="true" class="halflings-icon white trash"></span></a></td>
+                    </tr>
+                    </#if>
+                    </#list>
+                    </#if>
+                </tbody>
+            </table>
+
+            <!--match list-->
+
+        </div>
+        </#list>
+    </div>
+    <script>
+        $(document).ready(function () {
+            //time_prev = $('#tab-prev').value;
+            $('#tab-prev').click(function () {
+                //alert('prev');
+                $.ajax({
+                    url: "/matches",
+                    data: {
+                        update_date: 1,
+                        date: document.getElementById("tab-prev").value/*time_prev*/,
+                        update_type: 'prev'
+                    },
+                    type: 'post',
+                    beforeSend: function () {
+                        $('#tablist').html('<div style="text-align:center;font-size:20px">Loading...</div>');
+                    },
+                    success: function (res) {
+                        $('#tablist').html(res)
+                    }
+                });
+            });
+
+
+            //time_next = $('#tab-next');
+            $('#tab-next').click(function () {
+                //alert('next');
+                $.ajax({
+                    url: "/matches",
+                    data: {
+                        update_date: 1,
+                        date: document.getElementById("tab-next").value /*time_next*/,
+                        update_type: 'next'
+                    },
+                    type: 'post',
+                    beforeSend: function () {
+                        $('#tablist').html('<div style="text-align:center;font-size:20px">Loading...</div>');
+                    },
+                    success: function (res) {
+                        $('#tablist').html(res)
+                    }
+                });
+            });
+        });
+
+    </script>
+</div>
